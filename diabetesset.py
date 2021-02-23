@@ -29,8 +29,21 @@ check_df(df)
 corr = df.corr()
 print(corr)
 
-
+#Isı haritasında, daha parlak renkler daha fazla korelasyonu gösterir.
+# Tablodan ve ısı haritasından da görebileceğimiz gibi, glikoz seviyeleri, yaş, vücut kitle indeksi ve gebelik sayısı, sonuç değişkeni ile önemli bir korelasyona sahiptir. Ayrıca yaş ve gebelikler veya insülin ve cilt kalınlığı gibi özellik çiftleri arasındaki korelasyona dikkat ediniz.
 sns.heatmap(corr,
          xticklabels=corr.columns,
          yticklabels=corr.columns)
 plt.show()
+
+df.hist(bins=20,color = "#1c0f45",edgecolor='orange',figsize = (15,15));
+plt.show()
+
+#kaç kişinin şeker hastası olduğuna ve kaçının şeker hastası olmadığını bulmak için boxplot grafiğinden yararlanacağım
+sns.countplot(x="Outcome", data=df)
+plt.show()
+
+#Yaş ile sonuç arasındaki ilişkiyi görmek için
+sns.barplot(x="Outcome", y="Age", data=df)
+plt.show()
+#yaş ortalamasının daha yüksek olduğunu görebiliriz.
