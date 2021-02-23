@@ -15,7 +15,7 @@ pd.set_option('display.width', 170)
 
 
 def load():
-    data = pd.read_csv("datasets/titanic.csv")
+    data = pd.read_csv(r"C:\Users\Suleakcay\PycharmProjects\pythonProject6\data\diabetes.csv")
     return data
 
 df = load()
