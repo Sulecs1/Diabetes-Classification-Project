@@ -7,6 +7,7 @@ from sklearn.linear_model import LogisticRegression
 import pickle
 from helpers.data_prep import *
 from helpers.eda import *
+from helpers.helpers import *
 
 
 pd.pandas.set_option('display.max_columns', None)
@@ -19,3 +20,7 @@ def load():
     return data
 
 df = load()
+
+grab_col_names(df)
+check_df(df)
+
