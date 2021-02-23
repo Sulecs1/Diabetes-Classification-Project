@@ -66,7 +66,7 @@ df.loc[(df['Age'] >= 56), 'NEW_AGE_CAT'] = 'senior'
 df.head()
 
 (df.groupby(["NEW_AGE_CAT"]).agg('count'))
-
+#yaş aralıklarını grupladım daha sonra bu gruplara göre hasta olup olmama oranını gruplara göre gözlemledim.
 df.groupby(["NEW_AGE_CAT", "Outcome"]).size().unstack(fill_value=0).apply(lambda x: x/sum(x), axis=1)
 
 #Outcome         0     1
@@ -74,3 +74,7 @@ df.groupby(["NEW_AGE_CAT", "Outcome"]).size().unstack(fill_value=0).apply(lambda
 #mature      0.481 0.519
 #senior      0.660 0.340
 #young       0.788 0.212
+#sonuçlara bakılırsa gençlerin hasta olmama oranı daha azdır
+
+df.groupby(["NEW_AGE_CAT", "Outcome"]).mean()
+#
