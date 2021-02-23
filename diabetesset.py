@@ -24,7 +24,7 @@ df = load()
 grab_col_names(df)
 check_df(df)
 
-
+df.isnull().sum()
 #ısı haritası kullanarak değişkenlerin birbirlerine göre korelasyon durumları incelendi
 corr = df.corr()
 print(corr)
@@ -47,3 +47,13 @@ plt.show()
 sns.barplot(x="Outcome", y="Age", data=df)
 plt.show()
 #yaş ortalamasının daha yüksek olduğunu görebiliriz.
+
+p=sns.pairplot(df, hue = 'Outcome')
+plt.show()
+
+#Dataset Preparation#
+#Outcome int64
+df["Outcome"] = df["Outcome"].astype('category') #tip dönüştürme işlemi
+
+
+
