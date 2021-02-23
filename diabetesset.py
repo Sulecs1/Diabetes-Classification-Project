@@ -54,6 +54,23 @@ plt.show()
 #Dataset Preparation#
 #Outcome int64
 df["Outcome"] = df["Outcome"].astype('category') #tip dönüştürme işlemi
+df.groupby("Outcome").agg({'Age':'nunique'})
+#Outcome  Age
+#0         51
+#1         45
+df["Age"] #yaşların dağılımına baktım
 
+df.loc[(df['Age'] < 30), 'NEW_AGE_CAT'] = 'young'
+df.loc[(df['Age'] >= 30) & (df['Age'] < 56), 'NEW_AGE_CAT'] = 'mature'
+df.loc[(df['Age'] >= 56), 'NEW_AGE_CAT'] = 'senior'
+df.head()
 
+(df.groupby(["NEW_AGE_CAT"]).agg('count'))
 
+df.groupby(["NEW_AGE_CAT", "Outcome"]).size().unstack(fill_value=0).apply(lambda x: x/sum(x), axis=1)
+
+#Outcome         0     1
+#NEW_AGE_CAT
+#mature      0.481 0.519
+#senior      0.660 0.340
+#young       0.788 0.212
