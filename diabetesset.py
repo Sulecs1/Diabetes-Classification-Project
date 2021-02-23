@@ -61,7 +61,7 @@ data_understand(df)
 #Aykırı değer varsa görebilmek için
 msno.bar(df)
 plt.show()
-
+grab_col_names(df)
 def cat_num_col(df):
     cat_cols = col_names = [col for col in df.columns if df[col].dtypes != "O"]
     if len(cat_cols) == 0:
