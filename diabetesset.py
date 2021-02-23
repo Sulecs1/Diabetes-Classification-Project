@@ -24,3 +24,13 @@ df = load()
 grab_col_names(df)
 check_df(df)
 
+
+#ısı haritası kullanarak değişkenlerin birbirlerine göre korelasyon durumları incelendi
+corr = df.corr()
+print(corr)
+
+
+sns.heatmap(corr,
+         xticklabels=corr.columns,
+         yticklabels=corr.columns)
+plt.show()
